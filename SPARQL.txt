@@ -1,0 +1,11 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?uri_image
+WHERE {
+  ?auteur rdf:type foaf:Person.
+  ?auteur foaf:name ?regex.
+  Filter regex(?regex, "Mozart").
+  Filter regex(?regex, "Wolfgang").
+  ?auteur foaf:depiction ?uri_image.
+} LIMIT 100
